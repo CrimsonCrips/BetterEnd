@@ -104,10 +104,8 @@ dependencies {
 //    modCompileOnly "dev.emi:emi-fabric:${emi_version}:api"
 //    modLocalRuntime "dev.emi:emi-fabric:${emi_version}"
 
-    if (local_wunderlib) {
-        println "Using local WunderLib"
-        implementation project(path: ":WunderLib", configuration: 'dev')
-    }
+    modImplementation "com.github.quiqueck:WunderLib:1.1.2"
+    include "com.github.quiqueck:WunderLib:1.1.2"
 }
 
 processResources {
