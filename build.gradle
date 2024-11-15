@@ -91,11 +91,6 @@ dependencies {
 
     modApi "vazkii.patchouli:Patchouli:${project.patchouli_version}"
     println "Using local BCLib: ${local_bclib}"
-    if (local_bclib) {
-        implementation(project(path: ":BCLib", configuration: 'dev'))
-    } else {
-        modImplementation "com.github.quiqueck:BCLib:${project.bclib_version}"
-    }
     modCompileOnly "me.shedaniel:RoughlyEnoughItems-fabric:${project.rei_version}"
     modCompileOnly "me.shedaniel:RoughlyEnoughItems-api-fabric:${project.rei_version}"
 
@@ -106,10 +101,10 @@ dependencies {
     modCompileOnly "dev.emi:emi-fabric:${emi_version}:api"
     modLocalRuntime "dev.emi:emi-fabric:${emi_version}"
 
-    if (local_wunderlib) {
-        println "Using local WunderLib"
-        implementation project(path: ":WunderLib", configuration: 'dev')
-    }
+    modImplementation "com.github.quiqueck:BCLib:3.0.14"
+
+    modImplementation "com.github.quiqueck:WunderLib:1.1.2"
+    include "com.github.quiqueck:WunderLib:1.1.2"
 }
 
 processResources {

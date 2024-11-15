@@ -1,5 +1,6 @@
 package org.betterx.betterend.recipe.builders;
 
+import net.minecraft.nbt.CompoundTag;
 import org.betterx.bclib.BCLib;
 import org.betterx.bclib.interfaces.UnknownReceipBookCategory;
 import org.betterx.bclib.recipes.AbstractSingleInputRecipeBuilder;
@@ -111,7 +112,14 @@ public class InfusionRecipe implements Recipe<InfusionRitual>, UnknownReceipBook
 
     @Override
     public ItemStack assemble(InfusionRitual ritual, RegistryAccess acc) {
-        return output.copy();
+
+        ItemStack itemstack = this.output.copy();
+        CompoundTag compoundtag = ritual.getItem(1).getTag();
+        if (compoundtag != null) {
+            itemstack.setTag(compoundtag.copy());
+        }
+
+        return itemstack;
     }
 
     @Override
